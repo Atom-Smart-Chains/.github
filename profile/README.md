@@ -1,6 +1,6 @@
 # 📘 Documentação Interna – Labels e Versionamento  
 
-Este documento descreve a **topologia**, **status** e **versionamento** das Labels da organização, incluindo **Conecta, MemeDex, WebDex e ATOMDex**.  
+Este documento descreve a **topologia**, **status** e **versionamento** das Labels da organização, incluindo **Conecta, MemeDex, WebDex e ATOMDex (Polygon e Solana)**.  
 
 ---
 
