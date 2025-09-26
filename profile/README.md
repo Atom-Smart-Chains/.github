@@ -8,7 +8,7 @@ Este documento descreve a **topologia**, **status** e **versionamento** das Labe
 
 | Label    | API / Backend            | Frontend              | Admin / Dashboard     | Banco de Dados | Contratos                   | Status | Versão Atual |
 |----------|--------------------------|-----------------------|-----------------------|----------------|-----------------------------|--------|--------------|
-| **Conecta** | `conecta-api` (AdonisJS) | `conecta-frontend` (Angular) | `conecta-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
+| **Conecta** | [conecta-api](https://github.com/Atom-Smart-Chains/conecta-api) (AdonisJS) | `conecta-frontend` (Angular) | `conecta-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
 | **MemeDex** | `memedex-api` (AdonisJS) | `memedex-frontend` (Angular) | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
 | **WebDex**  | `webdex-api` (AdonisJS)  | `webdex-frontend` (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
 | **ATOMDex Polygon** | `atomdex-polygon-api` (AdonisJS) | `atomdex-polygon-frontend` (Angular) | `atomdex-polygon-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
