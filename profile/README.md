@@ -1,3 +1,34 @@
+# 📘 Documentação Interna – Labels e Versionamento  
+
+Este documento descreve a **topologia**, **status** e **versionamento** das Labels da organização, incluindo **Conecta, MemeDex, WebDex e ATOMDex**.  
+
+---
+
+## 🔎 Labels e Componentes  
+
+| Label    | API / Backend            | Frontend              | Admin / Dashboard     | Banco de Dados | Contratos                   | Status | Versão Atual |
+|----------|--------------------------|-----------------------|-----------------------|----------------|-----------------------------|--------|--------------|
+| **Conecta** | `conecta-api` (AdonisJS) | `conecta-frontend` (Angular) | `conecta-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
+| **MemeDex** | `memedex-api` (AdonisJS) | `memedex-frontend` (Angular) | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
+| **WebDex**  | `webdex-api` (AdonisJS)  | `webdex-frontend` (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
+| **ATOMDex Polygon** | `atomdex-polygon-api` (AdonisJS) | `atomdex-polygon-frontend` (Angular) | `atomdex-polygon-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4 (manut.) / v5 (prod.) |
+| **ATOMDex Solana** | `atomdex-solana/frontend` (Elysia (Bun/TypeScript)) | `atomdex-solana/fronend` (Next.js) | — | — | Solana (Rust) | Inativo | v1 (dev.) |
+
+---
+
+## 🎓 Stack Tecnológica  
+
+- **Backend**: AdonisJS (Node.js)  
+- **Frontend/Admin**: Angular  
+- **Banco de Dados**: PostgreSQL  
+- **Contratos**:  
+  - Solana → Anchor / Rust  
+  - Polygon → Solidity / EVM  
+- **Versionamento**: GitFlow + Semantic Versioning  
+- **Deploy**: PM2 + CI/CD (ajustado por projeto)  
+
+---
+
 # 📋 Estrutura de Branches e Versionamento
 
 Este projeto segue uma estratégia de **branches** e **tags** para gerenciamento de versões paralelas, permitindo manter múltiplas versões com estabilidade e organização.
