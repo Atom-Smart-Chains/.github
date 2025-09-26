@@ -18,8 +18,8 @@ Este documento descreve a **topologia**, **status** e **versionamento** das Labe
 
 ## 🎓 Stack Tecnológica  
 
-- **Backend**: AdonisJS (Node.js)  
-- **Frontend/Admin**: Angular  
+- **Backend**: AdonisJS (Node.js) & Elysia (Bun/TypeScript)
+- **Frontend/Admin**: Angular & Next.js
 - **Banco de Dados**: PostgreSQL  
 - **Contratos**:  
   - Solana → Anchor / Rust  
