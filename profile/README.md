@@ -37,27 +37,34 @@ Este documento descreve a **topologia**, **status** e **versionamento** das Labe
 
 # 📋 Estrutura de Branches e Versionamento
 
-Este projeto segue uma estratégia de **branches** e **tags** para gerenciamento de versões paralelas, permitindo manter múltiplas versões com estabilidade e organização.
+Este projeto segue uma estratégia de **branches** e **tags** para gerenciamento de versões paralelas, permitindo manter múltiplas versões com estabilidade e organização.  
+Esse modelo garante que versões antigas possam ser preservadas para histórico ou manutenção crítica, enquanto a versão mais recente continua evoluindo.
 
 ---
 
 ## 🌿 Estrutura de Branches
 
-`main` # Branch principal (produção - última versão - ex: v5.x)<br>
-├── `develop` # Branch principal de desenvolvimento (última versão - ex: v5.x)<br>
-│   └── `feature/*` # Branches de funcionalidades (última versão - ex: v5.x)<br>
-│<br>
-├── `maintenance/v4.x` # Branch de manutenção da versão 4.x<br>
-│   └── `develop/v4.x` # Branches de desenvolvimento para v4.x<br>
-│       └── `feature/v4.x/*` # Branches de funcionalidades para v4.x<br>
-│<br>
-└── `maintenance/v3.x` # Branch de manutenção da versão 3.x<br>
-│   └── `develop/v3.x` # Branches de desenvolvimento para v3.x<br>
-        └── `feature/v3.x/*` # Branches de funcionalidades para v3.x<br>
+```text
+main                # Produção - última versão (ex: v5.x)
+├── develop         # Desenvolvimento da versão atual (v5.x)
+│   └── feature/*   # Funcionalidades para v5.x
+│
+├── maintenance/v4.x    # Manutenção da versão 4.x
+│   ├── develop/v4.x    # Desenvolvimento ativo para v4.x
+│   │   └── feature/v4.x/*   # Funcionalidades para v4.x
+│   └── hotfix/v4.x/*   # Correções críticas em produção
+│
+└── maintenance/v3.x    # Manutenção da versão 3.x
+    ├── develop/v3.x    # Desenvolvimento ativo para v3.x
+    │   └── feature/v3.x/*   # Funcionalidades para v3.x
+    └── hotfix/v3.x/*   # Correções críticas em produção
+```
 
-- **`develop ou develop/vX.x`** → Linha principal de desenvolvimento. Originada a partir da `branch` main ou maintenance/vX.x. 
-- **`maintenance/vX.x`** → Apenas hotfixes e releases estáveis. Originada a partir da `tag` vX.x.
-- **`feature/* ou feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão. Originada a partir da `branch` develop ou develop/vX.x.
+- **`develop`** → Linha principal de desenvolvimento da versão atual (originada a partir de `main`).  
+- **`develop/vX.x`** → Linha de desenvolvimento de versões antigas ainda mantidas (originada a partir de `maintenance/vX.x`).  
+- **`maintenance/vX.x`** → Apenas hotfixes e releases estáveis. Originada a partir da `tag` vX.x.  
+- **`feature/* ou feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão.  
+- **`hotfix/vX.x/*`** → Correções críticas aplicadas diretamente em produção e propagadas para o desenvolvimento correspondente.  
 
 ---
 
@@ -65,12 +72,12 @@ Este projeto segue uma estratégia de **branches** e **tags** para gerenciamento
 
 As **tags** seguem o padrão Semantic Versioning (MAJOR.MINOR.PATCH):
 
-- `v4.0.0` → Release inicial da versão 4
-- `v4.0.1` → Hotfix para a versão 4
-- `v4.1.0` → Nova funcionalidade na versão 4
-- `v5.0.0` → Release da versão 5
+- `v4.0.0` → Release inicial da versão 4  
+- `v4.0.1` → Hotfix para a versão 4  
+- `v4.1.0` → Nova funcionalidade na versão 4  
+- `v5.0.0` → Release da versão 5  
 
-> 🔑 Sempre criar **tags** a partir de uma branch de **manutenção**.
+> 🔑 Sempre criar **tags** a partir de **commits estáveis em branches de manutenção (`maintenance/vX.x`) ou da `main` (no caso da última versão)**.
 
 ---
 
@@ -78,15 +85,19 @@ As **tags** seguem o padrão Semantic Versioning (MAJOR.MINOR.PATCH):
 
 ### 🔹 Criar branch de manutenção e desenvolvimento
 
-`git checkout -b maintenance/vX.x vX.x.x`<br>
-`git checkout -b develop/vX.x maintenance/vX.x`<br>
+```bash
+git checkout -b maintenance/vX.x vX.x.x
+git checkout -b develop/vX.x maintenance/vX.x
+```
 
 ---
 
 ### 🔹 Desenvolvimento de novas features
 
-`git checkout develop/vX.x`<br>
-`git checkout -b feature/nova-funcionalidade`<br>
+```bash
+git checkout develop/vX.x
+git checkout -b feature/nova-funcionalidade
+```
 
 ---
 
@@ -94,38 +105,49 @@ As **tags** seguem o padrão Semantic Versioning (MAJOR.MINOR.PATCH):
 
 Quando há uma falha crítica em produção:
 
-`git checkout maintenance/vX.x`<br>
-`git checkout -b hotfix/correcao-urgente`<br>
+```bash
+git checkout maintenance/vX.x
+git checkout -b hotfix/correcao-urgente
+```
 
 Após implementar e testar o hotfix, ele deve ser aplicado **tanto na branch de manutenção quanto na de desenvolvimento** para manter a consistência:
 
-# 1. Merge do hotfix na manutenção
-`git checkout maintenance/vX.x`<br>
-`git merge hotfix/correcao-urgente`<br>
+1. Merge do hotfix na manutenção:
+   ```bash
+   git checkout maintenance/vX.x
+   git merge hotfix/correcao-urgente
+   ```
 
-# 2. Merge da manutenção (já com hotfix) na develop correspondente
-`git checkout develop/vX.x`<br>
-`git merge maintenance/vX.x`<br>
+2. Merge da manutenção (já com hotfix) na develop correspondente:
+   ```bash
+   git checkout develop/vX.x
+   git merge maintenance/vX.x
+   ```
 
 📌 **Explicação passo a passo da troca de branches para merge:**
-
-1. Use `git checkout <branch>` para mudar de branch.
-2. Faça o merge usando `git merge <branch-que-será-juntada>`.
-3. Repita o processo na branch `development/vX.x`, mas desta vez juntando a manutenção.
+1. Use `git checkout <branch>` para mudar de branch.  
+2. Faça o merge usando `git merge <branch-que-será-juntada>`.  
+3. Repita o processo na branch `develop/vX.x`, mas desta vez juntando a manutenção.  
 
 ---
 
 ## 🚀 Lançamento de Versões
 
-`git checkout maintenance/vX.x`<br>
-`git tag -a vX.x.x -m "Nova versão x.x.x"`<br>
-`git push origin maintenance/vX.x --tags`<br>
+```bash
+git checkout maintenance/vX.x
+git tag -a vX.x.x -m "Nova versão x.x.x"
+git push origin maintenance/vX.x --tags
+```
 
 ---
 
 ## ✅ Boas Práticas
 
-- **`maintenance/vX.x`** → Somente hotfixes e versões estáveis
-- **`feature/vX.x`** → Desenvolvimento de novas funcionalidades
-- **Tags** → Sempre criadas a partir de branches de `maintenance/main` ou commits
-- **Merges** → Hotfixes feitos em `feature/*` devem ser **sempre propagados para a `develop` correspondente**
+- **`main`** → Sempre representa a última versão estável em produção.  
+- **`maintenance/vX.x`** → Somente hotfixes e versões estáveis.  
+- **`develop`** → Desenvolvimento da última versão.  
+- **`develop/vX.x`** → Desenvolvimento de versões antigas mantidas.  
+- **`feature/*`** → Desenvolvimento de novas funcionalidades.  
+- **`hotfix/*`** → Correções críticas feitas diretamente em produção.  
+- **Tags** → Criadas a partir de commits estáveis em branches de manutenção ou da `main`.  
+- **Merges** → Hotfixes sempre devem ser propagados também para a branch `develop` correspondente.  
