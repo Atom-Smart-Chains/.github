@@ -8,13 +8,16 @@ Este documento descreve a **topologia**, **status** e **versionamento** das Labe
 
 | Label    | API / Backend            | Frontend              | Admin / Dashboard     | Banco de Dados | Contratos                   | Status | Versão Atual |
 |----------|--------------------------|-----------------------|-----------------------|----------------|-----------------------------|--------|--------------|
-| **Conecta >=v5** | [conecta-api](https://github.com/Atom-Smart-Chains/conecta-api) (AdonisJS) | [conecta-frontend](https://github.com/Atom-Smart-Chains/conecta-frontend-v5) (Angular) | [conecta-admin](https://github.com/Atom-Smart-Chains/conecta-admin) (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v5 (prod.) |
-| **Conecta <=v4** | [conecta-api](https://github.com/Atom-Smart-Chains/conecta-api) (AdonisJS) | [conecta-frontend](https://github.com/Atom-Smart-Chains/conecta-frontend-v4) (Angular) | [conecta-admin](https://github.com/Atom-Smart-Chains/conecta-admin) (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v3/4 (prod.) |
+| **Conecta >=v5** | [conecta-api](https://github.com/Atom-Smart-Chains/conecta-api) (AdonisJS) | [conecta-frontend-v5](https://github.com/Atom-Smart-Chains/conecta-frontend-v5) (Angular) | [conecta-admin](https://github.com/Atom-Smart-Chains/conecta-admin) (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v5 (prod.) |
+| **Conecta <=v4** | [conecta-api](https://github.com/Atom-Smart-Chains/conecta-api) (AdonisJS) | [conecta-frontend-v4](https://github.com/Atom-Smart-Chains/conecta-frontend-v4) (Angular) | [conecta-admin](https://github.com/Atom-Smart-Chains/conecta-admin) (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v3/4 (prod.) |
 | **MemeDex** | [memedex-api](https://github.com/Atom-Smart-Chains/memedex-api) (AdonisJS) | [memedex-frontend](https://github.com/Atom-Smart-Chains/memedex-frontend) (Angular) | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v3/4/5 (prod.) |
-| **WebDex >=v5**  | [webdex-api](https://github.com/Atom-Smart-Chains/webdex-api) (AdonisJS)  | [webdex-frontend](https://github.com/Atom-Smart-Chains/webdex-frontend-v5) (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v5 (prod.) |
-| **WebDex <=v4**  | [webdex-api](https://github.com/Atom-Smart-Chains/webdex-api) (AdonisJS)  | [webdex-frontend](https://github.com/Atom-Smart-Chains/webdex-frontend-v4) (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v3/4 (prod.) |
+| **WebDex >=v5**  | [webdex-api](https://github.com/Atom-Smart-Chains/webdex-api) (AdonisJS)  | [webdex-frontend-v5](https://github.com/Atom-Smart-Chains/webdex-frontend-v5) (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v5 (prod.) |
+| **WebDex <=v4**  | [webdex-api](https://github.com/Atom-Smart-Chains/webdex-api) (AdonisJS)  | [webdex-frontend-v4](https://github.com/Atom-Smart-Chains/webdex-frontend-v4) (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v3/4 (prod.) |
 | **ATOMDex Polygon** | [atomdex-polygon-api](https://github.com/Atom-Smart-Chains/atomdex-polygon-api) (AdonisJS) | [atomdex-polygon-frontend](https://github.com/Atom-Smart-Chains/atomdex-polygon-frontend) (Angular) | `atomdex-polygon-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4/5 (prod.) |
 | **ATOMDex Solana** | [atomdex-solana/frontend/src/elysia](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end/src/elysia) (Elysia (Bun/TypeScript)) | [atomdex-solana/frontend/src/elysia](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end) (Next.js) | — | — | [atomdex-solana/frontend/contratos](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end) Solana (Rust) | Inativo | v1 (dev.) |
+
+> ℹ️ As APIs (`*-api`) são compartilhadas entre versões (v3, v4, v5).  
+> Apenas os frontends mudam conforme a evolução da versão.
 
 ---
 
