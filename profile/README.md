@@ -123,6 +123,6 @@ Após implementar e testar o hotfix, ele deve ser aplicado **tanto na branch de 
 ## ✅ Boas Práticas
 
 - **`maintenance/vX.x`** → Somente hotfixes e versões estáveis
-- **`development/vX.x`** → Desenvolvimento de novas funcionalidades
-- **Tags** → Sempre criadas a partir de branches de manutenção
-- **Merges** → Hotfixes feitos em `maintenance` devem ser **sempre propagados para a `develop` correspondente**
+- **`feature/vX.x`** → Desenvolvimento de novas funcionalidades
+- **Tags** → Sempre criadas a partir de branches de `maintenance/main` ou commits
+- **Merges** → Hotfixes feitos em `feature/*` devem ser **sempre propagados para a `maintenance/develop` correspondente**
