@@ -45,16 +45,19 @@ Este projeto segue uma estratégia de **branches** e **tags** para gerenciamento
 
 `main` # Branch principal (produção - última versão - ex: v5.x)<br>
 ├── `develop` # Branch principal de desenvolvimento (última versão - ex: v5.x)<br>
+│   └── `feature/*` # Branches de funcionalidades (última versão - ex: v5.x)<br>
 │<br>
 ├── `maintenance/v4.x` # Branch de manutenção da versão 4.x<br>
-│   └── `feature/v4.x/*` # Branches de funcionalidades para v4.x<br>
+│   └── `develop/v4.x` # Branches de desenvolvimento para v4.x<br>
+│       └── `feature/v4.x/*` # Branches de funcionalidades para v4.x<br>
 │<br>
 └── `maintenance/v3.x` # Branch de manutenção da versão 3.x<br>
-    └── `feature/v3.x/*` # Branches de funcionalidades para v3.x<br>
+│   └── `develop/v3.x` # Branches de desenvolvimento para v3.x<br>
+        └── `feature/v3.x/*` # Branches de funcionalidades para v3.x<br>
 
-- **`develop`** → Linha principal de desenvolvimento da versão mais recente. Originada a partir da `branch` main. 
+- **`develop ou develop/vX.x`** → Linha principal de desenvolvimento. Originada a partir da `branch` main ou maintenance/vX.x. 
 - **`maintenance/vX.x`** → Apenas hotfixes e releases estáveis. Originada a partir da `tag` vX.x.
-- **`feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão. Originada a partir da `branch` maintenance/vX.x.
+- **`feature/* ou feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão. Originada a partir da `branch` develop ou develop/vX.x.
 
 ---
 
@@ -76,13 +79,13 @@ As **tags** seguem o padrão Semantic Versioning (MAJOR.MINOR.PATCH):
 ### 🔹 Criar branch de manutenção e desenvolvimento
 
 `git checkout -b maintenance/vX.x vX.x.x`<br>
-`git checkout -b development/vX.x maintenance/vX.x`<br>
+`git checkout -b develop/vX.x maintenance/vX.x`<br>
 
 ---
 
 ### 🔹 Desenvolvimento de novas features
 
-`git checkout development/vX.x`<br>
+`git checkout develop/vX.x`<br>
 `git checkout -b feature/nova-funcionalidade`<br>
 
 ---
@@ -101,7 +104,7 @@ Após implementar e testar o hotfix, ele deve ser aplicado **tanto na branch de 
 `git merge hotfix/correcao-urgente`<br>
 
 # 2. Merge da manutenção (já com hotfix) na develop correspondente
-`git checkout development/vX.x`<br>
+`git checkout develop/vX.x`<br>
 `git merge maintenance/vX.x`<br>
 
 📌 **Explicação passo a passo da troca de branches para merge:**
@@ -125,4 +128,4 @@ Após implementar e testar o hotfix, ele deve ser aplicado **tanto na branch de 
 - **`maintenance/vX.x`** → Somente hotfixes e versões estáveis
 - **`feature/vX.x`** → Desenvolvimento de novas funcionalidades
 - **Tags** → Sempre criadas a partir de branches de `maintenance/main` ou commits
-- **Merges** → Hotfixes feitos em `feature/*` devem ser **sempre propagados para a `maintenance/develop` correspondente**
+- **Merges** → Hotfixes feitos em `feature/*` devem ser **sempre propagados para a `develop` correspondente**
