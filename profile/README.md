@@ -12,7 +12,7 @@ Este documento descreve a **topologia**, **status** e **versionamento** das Labe
 | **MemeDex** | [memedex-api](https://github.com/Atom-Smart-Chains/memedex-api) (AdonisJS) | [memedex-frontend](https://github.com/Atom-Smart-Chains/memedex-frontend) (Angular) | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v3/4/5 (prod.) |
 | **WebDex**  | [webdex-api](https://github.com/Atom-Smart-Chains/webdex-api) (AdonisJS)  | [webdex-frontend](https://github.com/Atom-Smart-Chains/webdex-frontend) (Angular)  | —                     | PostgreSQL     | Polygon (Solidity) | Ativo  | v4/5 (prod.) |
 | **ATOMDex Polygon** | [atomdex-polygon-api](https://github.com/Atom-Smart-Chains/atomdex-polygon-api) (AdonisJS) | [atomdex-polygon-frontend](https://github.com/Atom-Smart-Chains/atomdex-polygon-frontend) (Angular) | `atomdex-polygon-admin` (Angular) | PostgreSQL | Polygon (Solidity) | Ativo  | v4/5 (prod.) |
-| **ATOMDex Solana** | [atomdex-solana/frontend/src/elysia](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end/src/elysia) (Elysia (Bun/TypeScript)) | `atomdex-solana/fronend` (Next.js) | — | — | Solana (Rust) | Inativo | v1 (dev.) |
+| **ATOMDex Solana** | [atomdex-solana/frontend/src/elysia](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end/src/elysia) (Elysia (Bun/TypeScript)) | [atomdex-solana/frontend/src/elysia](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end) (Next.js) | — | — | [atomdex-solana/frontend/contratos](https://github.com/Atom-Smart-Chains/atomdex-solana/tree/develop/front-end) Solana (Rust) | Inativo | v1 (dev.) |
 
 ---
 
