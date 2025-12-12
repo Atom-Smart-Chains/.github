@@ -50,18 +50,18 @@ main                # Produção - última versão (ex: v5.x)
 │   └── feature/*   # Funcionalidades para v5.x
 │
 ├── maintenance/v4.x    # Manutenção da versão 4.x
-│   ├── develop/v4.x    # Desenvolvimento ativo para v4.x
+│   ├── development/v4.x    # Desenvolvimento ativo para v4.x
 │   │   └── feature/v4.x/*   # Funcionalidades para v4.x
 │   └── hotfix/v4.x/*   # Correções críticas em produção
 │
 └── maintenance/v3.x    # Manutenção da versão 3.x
-    ├── develop/v3.x    # Desenvolvimento ativo para v3.x
+    ├── development/v3.x    # Desenvolvimento ativo para v3.x
     │   └── feature/v3.x/*   # Funcionalidades para v3.x
     └── hotfix/v3.x/*   # Correções críticas em produção
 ```
 
 - **`develop`** → Linha principal de desenvolvimento da versão atual (originada a partir de `main`).  
-- **`develop/vX.x`** → Linha de desenvolvimento de versões antigas ainda mantidas (originada a partir de `maintenance/vX.x`).  
+- **`development/vX.x`** → Linha de desenvolvimento de versões antigas ainda mantidas (originada a partir de `maintenance/vX.x`).  
 - **`maintenance/vX.x`** → Apenas hotfixes e releases estáveis. Originada a partir da `tag` vX.x.  
 - **`feature/* ou feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão.  
 - **`hotfix/vX.x/*`** → Correções críticas aplicadas diretamente em produção e propagadas para o desenvolvimento correspondente.  
@@ -87,7 +87,7 @@ As **tags** seguem o padrão Semantic Versioning (MAJOR.MINOR.PATCH):
 
 ```bash
 git checkout -b maintenance/vX.x vX.x.x
-git checkout -b develop/vX.x maintenance/vX.x
+git checkout -b development/vX.x maintenance/vX.x
 ```
 
 ---
@@ -95,7 +95,7 @@ git checkout -b develop/vX.x maintenance/vX.x
 ### 🔹 Desenvolvimento de novas features
 
 ```bash
-git checkout develop/vX.x
+git checkout development/vX.x
 git checkout -b feature/nova-funcionalidade
 ```
 
@@ -120,14 +120,14 @@ Após implementar e testar o hotfix, ele deve ser aplicado **tanto na branch de 
 
 2. Merge da manutenção (já com hotfix) na develop correspondente:
    ```bash
-   git checkout develop/vX.x
+   git checkout development/vX.x
    git merge maintenance/vX.x
    ```
 
 📌 **Explicação passo a passo da troca de branches para merge:**
 1. Use `git checkout <branch>` para mudar de branch.  
 2. Faça o merge usando `git merge <branch-que-será-juntada>`.  
-3. Repita o processo na branch `develop/vX.x`, mas desta vez juntando a manutenção.  
+3. Repita o processo na branch `development/vX.x`, mas desta vez juntando a manutenção.  
 
 ---
 
@@ -146,7 +146,7 @@ git push origin maintenance/vX.x --tags
 - **`main`** → Sempre representa a última versão estável em produção.  
 - **`maintenance/vX.x`** → Somente hotfixes e versões estáveis.  
 - **`develop`** → Desenvolvimento da última versão.  
-- **`develop/vX.x`** → Desenvolvimento de versões antigas mantidas.  
+- **`development/vX.x`** → Desenvolvimento de versões antigas mantidas.  
 - **`feature/*`** → Desenvolvimento de novas funcionalidades.  
 - **`hotfix/*`** → Correções críticas feitas diretamente em produção.  
 - **Tags** → Criadas a partir de commits estáveis em branches de manutenção ou da `main`.  
