@@ -45,19 +45,15 @@ Esse modelo garante que versões antigas possam ser preservadas para histórico 
 ## 🌿 Estrutura de Branches
 
 ```text
-maintenance/v5.x               # Produção - última versão (ex: v5.x)
-├── development/v5.x         # Desenvolvimento da versão atual (v5.x)
-│   └── feature/v5.x/*   # Funcionalidades para v5.x
-│
-├── maintenance/v4.x    # Manutenção da versão 4.x
-│   ├── development/v4.x    # Desenvolvimento ativo para v4.x
-│   │   └── feature/v4.x/*   # Funcionalidades para v4.x
-│   └── hotfix/v4.x/*   # Correções críticas em produção
-│
-└── maintenance/v3.x    # Manutenção da versão 3.x
-    ├── development/v3.x    # Desenvolvimento ativo para v3.x
-    │   └── feature/v3.x/*   # Funcionalidades para v3.x
-    └── hotfix/v3.x/*   # Correções críticas em produção
+maintenance/v5.x               # PRODUÇÃO da versão 5 (SOMENTE releases estáveis)
+└── development/v5.x           # INTEGRAÇÃO para a versão 5 (onde as features se encontram)
+    └── feature/v5.x/*         # Novas funcionalidades para a v5
+    └── hotfix/v5.x/*          # Correções urgentes (merge em development E maintenance)
+
+maintenance/v4.x               # PRODUÇÃO da versão 4
+└── development/v4.x           # INTEGRAÇÃO para a versão 4
+    └── feature/v4.x/*         # Funcionalidades para a v4
+    └── hotfix/v4.x/*          # Correções urgentes (merge em development E maintenance)
 ```
 
 - **`maintenance/vX.x`** → Apenas hotfixes e releases estáveis. Originada a partir da `tag` vX.x.  
