@@ -146,5 +146,5 @@ git push origin maintenance/vX.x --tags
 - **`development/vX.x`** → Desenvolvimento de versões em não estáveis.  
 - **`feature/vX.x/*`** → Desenvolvimento de novas funcionalidades.  
 - **`hotfix/vX.x/*`** → Correções críticas feitas diretamente em produção.  
-- **Tags** → Criadas a partir de commits estáveis em branches de manutenção ou da `main`.  
-- **Merges** → Hotfixes sempre devem ser propagados também para a branch `develop` correspondente.  
+- **Tags** → Criadas a partir de commits estáveis em branches de manutenção.  
+- **Merges** → Hotfixes sempre devem ser propagados também para a branch `development` correspondente.  
