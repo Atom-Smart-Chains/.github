@@ -45,9 +45,9 @@ Esse modelo garante que versões antigas possam ser preservadas para histórico 
 ## 🌿 Estrutura de Branches
 
 ```text
-main                # Produção - última versão (ex: v5.x)
-├── develop         # Desenvolvimento da versão atual (v5.x)
-│   └── feature/*   # Funcionalidades para v5.x
+maintenance/v5.x               # Produção - última versão (ex: v5.x)
+├── development/v5.x         # Desenvolvimento da versão atual (v5.x)
+│   └── feature/v5.x/*   # Funcionalidades para v5.x
 │
 ├── maintenance/v4.x    # Manutenção da versão 4.x
 │   ├── development/v4.x    # Desenvolvimento ativo para v4.x
@@ -60,10 +60,9 @@ main                # Produção - última versão (ex: v5.x)
     └── hotfix/v3.x/*   # Correções críticas em produção
 ```
 
-- **`develop`** → Linha principal de desenvolvimento da versão atual (originada a partir de `main`).  
-- **`development/vX.x`** → Linha de desenvolvimento de versões antigas ainda mantidas (originada a partir de `maintenance/vX.x`).  
 - **`maintenance/vX.x`** → Apenas hotfixes e releases estáveis. Originada a partir da `tag` vX.x.  
-- **`feature/* ou feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão.  
+- **`development/vX.x`** → Linha de desenvolvimento de versões não estáveis (originada a partir de `maintenance/vX.x`).  
+- **`feature/vX.x/*`** → Desenvolvimento de novas funcionalidades para a versão.  
 - **`hotfix/vX.x/*`** → Correções críticas aplicadas diretamente em produção e propagadas para o desenvolvimento correspondente.  
 
 ---
@@ -86,7 +85,7 @@ As **tags** seguem o padrão Semantic Versioning (MAJOR.MINOR.PATCH):
 ### 🔹 Criar branch de manutenção e desenvolvimento
 
 ```bash
-git checkout -b maintenance/vX.x vX.x.x
+git checkout -b maintenance/vX.x
 git checkout -b development/vX.x maintenance/vX.x
 ```
 
@@ -96,7 +95,7 @@ git checkout -b development/vX.x maintenance/vX.x
 
 ```bash
 git checkout development/vX.x
-git checkout -b feature/nova-funcionalidade
+git checkout -b feature/vX.x/nova-funcionalidade
 ```
 
 ---
@@ -115,7 +114,7 @@ Após implementar e testar o hotfix, ele deve ser aplicado **tanto na branch de 
 1. Merge do hotfix na manutenção:
    ```bash
    git checkout maintenance/vX.x
-   git merge hotfix/correcao-urgente
+   git merge hotfix/vX.x/correcao-urgente
    ```
 
 2. Merge da manutenção (já com hotfix) na develop correspondente:
@@ -143,11 +142,9 @@ git push origin maintenance/vX.x --tags
 
 ## ✅ Boas Práticas
 
-- **`main`** → Sempre representa a última versão estável em produção.  
-- **`maintenance/vX.x`** → Somente hotfixes e versões estáveis.  
-- **`develop`** → Desenvolvimento da última versão.  
-- **`development/vX.x`** → Desenvolvimento de versões antigas mantidas.  
-- **`feature/*`** → Desenvolvimento de novas funcionalidades.  
-- **`hotfix/*`** → Correções críticas feitas diretamente em produção.  
+- **`maintenance/vX.x`** → Sempre representa a última versão estável em produção.    
+- **`development/vX.x`** → Desenvolvimento de versões em não estáveis.  
+- **`feature/vX.x/*`** → Desenvolvimento de novas funcionalidades.  
+- **`hotfix/vX.x/*`** → Correções críticas feitas diretamente em produção.  
 - **Tags** → Criadas a partir de commits estáveis em branches de manutenção ou da `main`.  
 - **Merges** → Hotfixes sempre devem ser propagados também para a branch `develop` correspondente.  
